@@ -855,7 +855,7 @@ const Register = () => {
         navigate('/');
       }, 3000);
     }
-  }, [user, navigate]);
+  }, [user]);
 };
 ```
 
