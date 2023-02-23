@@ -10,7 +10,7 @@ import {
   getUserFromLocalStorage,
   addUserToLocalStorage,
   removeUserFromLocalStorage,
-} from "../../utils/localStrorage";
+} from "../../utils/localStorage";
 
 const initialState = {
   isLoading: false,
