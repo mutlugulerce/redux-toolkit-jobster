@@ -4,7 +4,7 @@ import Wrapper from "../assets/wrappers/RegisterPage";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { loginUser, registerUser } from "../features/user/userSlice";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const initialState = {
   name: "",
   email: "",
@@ -43,18 +43,14 @@ const Register = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
-
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        navigate('/');
+        navigate("/");
       }, 3000);
     }
   }, [user]);
- 
 
-
-  
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={onSubmit}>
@@ -84,7 +80,20 @@ const Register = () => {
           handleChange={handleChange}
         />
         <button type="submit" className="btn btn-block">
-         {isLoading ? 'Loading' : 'Submit'}
+          {isLoading ? "Loading" : "Submit"}
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-block btn-hipster"
+          disabled={isLoading}
+          onClick={() => {
+            dispatch(
+              loginUser({ email: "testUser@test.com", password: "secret" })
+            );
+          }}
+        >
+          {isLoading ? "loading..." : "demo"}
         </button>
         <p>
           {values.isMember ? "Not a member yet?" : "Already a member?"}
