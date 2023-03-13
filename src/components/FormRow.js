@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
-const FormRow = ({type,labelText,name,value,handleChange}) => {
+const FormRow = ({ type, labelText, name, value, handleChange }) => {
   return (
     <div className="form-row">
-    <label htmlFor={name} className='form-label'>
-       {name}
+      <label htmlFor={name} className="form-label">
+        {name}
       </label>
 
       <input
@@ -12,10 +12,10 @@ const FormRow = ({type,labelText,name,value,handleChange}) => {
         value={value}
         name={name}
         onChange={handleChange}
-        className='form-input'
+        className="form-input"
       />
-      </div>
-  )
-}
+    </div>
+  );
+};
 
-export default FormRow
+export default FormRow;

@@ -1,11 +1,11 @@
-import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
   loginUserThunk,
   registerUserThunk,
   updateUserThunk,
-  clearStoreThunk 
-} from './userThunk';
+  clearStoreThunk,
+} from "./userThunk";
 
 import {
   getUserFromLocalStorage,
@@ -20,25 +20,25 @@ const initialState = {
 };
 
 export const registerUser = createAsyncThunk(
-  'user/registerUser',
+  "user/registerUser",
   async (user, thunkAPI) => {
-    return registerUserThunk('/auth/register', user, thunkAPI);
+    return registerUserThunk("/auth/register", user, thunkAPI);
   }
 );
 
 export const loginUser = createAsyncThunk(
-  'user/loginUser',
+  "user/loginUser",
   async (user, thunkAPI) => {
-    return loginUserThunk('/auth/login', user, thunkAPI);
+    return loginUserThunk("/auth/login", user, thunkAPI);
   }
 );
 export const updateUser = createAsyncThunk(
-  'user/updateUser',
+  "user/updateUser",
   async (user, thunkAPI) => {
-    return updateUserThunk('/auth/updateUser', user, thunkAPI);
+    return updateUserThunk("/auth/updateUser", user, thunkAPI);
   }
 );
-export const clearStore = createAsyncThunk('user/clearStore', clearStoreThunk);
+export const clearStore = createAsyncThunk("user/clearStore", clearStoreThunk);
 
 const userSlice = createSlice({
   name: "user",
@@ -47,13 +47,13 @@ const userSlice = createSlice({
     toggleSidebar: (state) => {
       state.isSidebarOpen = !state.isSidebarOpen;
     },
-    logoutUser: (state,{payload}) => {
+    logoutUser: (state, { payload }) => {
       state.user = null;
       state.isSidebarOpen = false;
-    
+
       removeUserFromLocalStorage();
-      if(payload) {
-        toast.success(payload)
+      if (payload) {
+        toast.success(payload);
       }
     },
   },
@@ -103,9 +103,9 @@ const userSlice = createSlice({
         toast.error(payload);
       })
 
-     .addCase(clearStore.rejected, () => {
-      toast.error('There was an error');
-     })
+      .addCase(clearStore.rejected, () => {
+        toast.error("There was an error");
+      });
   },
 });
 

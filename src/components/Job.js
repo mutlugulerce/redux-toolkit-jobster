@@ -3,11 +3,8 @@ import { useDispatch } from "react-redux";
 import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import JobInfo from "./JobInfo";
-import moment from 'moment'
-import { deleteJob ,setEditJob} from "../features/job/jobSlice";
-
-
-
+import moment from "moment";
+import { deleteJob, setEditJob } from "../features/job/jobSlice";
 
 const Job = ({
   _id,
@@ -19,7 +16,7 @@ const Job = ({
   status,
 }) => {
   const dispatch = useDispatch();
-  const date= moment(createdAt).format('MMM Do, YYYY');
+  const date = moment(createdAt).format("MMM Do, YYYY");
   return (
     <Wrapper>
       <header>
@@ -63,7 +60,7 @@ const Job = ({
               className="btn delete-btn"
               type="button"
               onClick={() => {
-            dispatch(deleteJob(_id));
+                dispatch(deleteJob(_id));
               }}
             >
               Delete
