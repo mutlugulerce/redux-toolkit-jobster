@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
   loginUserThunk,
   registerUserThunk,
   updateUserThunk,
+  clearStoreThunk 
 } from './userThunk';
 
 import {
@@ -37,6 +38,7 @@ export const updateUser = createAsyncThunk(
     return updateUserThunk('/auth/updateUser', user, thunkAPI);
   }
 );
+export const clearStore = createAsyncThunk('user/clearStore', clearStoreThunk);
 
 const userSlice = createSlice({
   name: "user",
@@ -100,6 +102,10 @@ const userSlice = createSlice({
         state.isLoading = false;
         toast.error(payload);
       })
+
+     .addCase(clearStore.rejected, () => {
+      toast.error('There was an error');
+     })
   },
 });
 
